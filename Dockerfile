@@ -1,22 +1,18 @@
-# Use official Python image
 FROM python:3.11-slim
 
-
-RUN mkdir /app
-WORKDIR /app
+WORKDIR /backend
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
+
+COPY requirements.txt /backend/requirements.txt
+
 RUN pip install --upgrade pip
-
-COPY requirements.txt /app/
-
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY backend/ /app/
 
-
+COPY backend/ /backend/
 
 EXPOSE 8000
 

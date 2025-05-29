@@ -33,6 +33,7 @@ DEBUG = True
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS","127.0.0.1").split(",")
 
 
+AUTH_USER_MODEL = 'users.User'
 
 # Application definition
 
