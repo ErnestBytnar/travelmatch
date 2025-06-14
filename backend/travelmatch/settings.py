@@ -24,8 +24,6 @@ load_dotenv(dotenv_path=BASE_DIR / '.env')
 
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = os.environ.get("django-insecure-(xj%_zq=fg7&@$@4(_27)@-pns#7)!us)8!-jt0$4ty$0924b1")
-'''django-insecure-(xj%_zq=fg7&@$@4(_27)@-pns#7)!us)8!-jt0$4ty$0924b1'''
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = bool(os.environ.get("DEBUG", default=0))
@@ -36,6 +34,9 @@ ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS","127.0.0.1").split(",")
 AUTH_USER_MODEL = 'users.User'
 
 # Application definition
+
+
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -51,7 +52,14 @@ INSTALLED_APPS = [
     'apps.users',
     'apps.trips',
     'apps.matching',
+    'rest_framework_simplejwt',
 ]
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
